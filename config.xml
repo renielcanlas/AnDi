@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns   = "http://www.w3.org/ns/widgets"
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+        id          = "com.infinite.AnDi"
+        versionCode = "10" 
+        version     = "1.0.0" >
+
+    <!-- versionCode is optional and Android only -->
+
+    <name>AnDi</name>
+
+    <description>
+        Store your everyday personal experiences with AnDi, your personal mobile bestfriend. ANdroidDIary
+    </description>
+
+    <author href="http://www.facebook.com/renielcanlas" email="raniellecanlas18@gmail.com">
+        Ranielle Canlas
+    </author>
+    <icon src="icon.png" />
+    <gap:splash src="ilt_default.png" />
+
+</widget>
