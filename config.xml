@@ -18,5 +18,6 @@
     </author>
     <icon src="icon.png" />
     <gap:splash src="ilt_default.png" />
+    <preference name="SplashScreenDelay" value="5000" />
 
 </widget>
