@@ -12,6 +12,8 @@
 	</style>
 	<script>
 		//Initialization
+		var permanentStorage = window.localStorage;
+		var tempStorage = window.sessionStorage;
 		
 		//Check Login Status 0=Out 1=In
 		if (localStorage.logstate) {
@@ -23,21 +25,41 @@
 		}
 		
 		//Show Default Password
-		if (!localStorage.password) {
-			localStorage.password = AnDi; //Set default password
-		}
+		
+		$(document).ready(function(){
+			if (localStorage.password !== 'undefined') {	
+				document.getElementById("defauth").innerHTML = 'Your password is <b>' + localStorage.passsword + '</b>';
+			} else {
+				localStorage.password = 'AnDi'; //Set default passsword as AnDi
+				document.getElementById("defauth").innerHTML = 'Your default password is <b>AnDi</b>';
+			}
+			
+			$("#clearpw").click(function(){
+				localStorage.removeItem(password);
+				//localStorage.password = 'AnDi'; //Set default passsword as AnDi
+				document.getElementById("defauth").innerHTML = 'Your default password is <b>AnDi</b>';
+			});
+			
+			$("#login").click(function(){
+				localStorage.logstate = 1;
+				window.reload();
+				if (localStorage.logstate == 1){
+					window.location="index.html";
+				}
+			});
+		});
 	</script>
   </head>
   <body>
 	<div class="page" data-role="page" id="whatsup"> <!--Home Section-->
 		<div data-role="header" data-position="fixed" data-theme="b">
+			<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-icon-back ui-btn-icon-left ui-btn-a ui-btn-icon-notext"></a>
 			<h1>AnDi</h1>
 			<a href="#panel1" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-left ui-icon-gear ui-btn-a ui-btn-a ui-btn-icon-notext">My Account</a>
 		</div><!-- /header -->
 		<div data-role="panel" data-position="right" data-theme="a" id="panel1">
 			<h3></h3>
 			<fieldset data-role="controlgroup">
-			<a href="#lockdiary" data-ajax="false" class="ui-btn ui-btn-a ui-icon-lock ui-btn-icon-left">Lock Diary</a>
 			<a href="#registerapp" data-ajax="false" class="ui-btn ui-btn-a ui-icon-edit ui-btn-icon-left">Register App</a>
 			<a href="#updates" data-ajax="false" class="ui-btn ui-btn-a ui-icon-recycle ui-btn-icon-left">Check for Updates</a>
 			<a href="#about" data-ajax="false" class="ui-btn ui-btn-a ui-icon-info ui-btn-icon-left">About this App</a>
@@ -48,10 +70,11 @@
 			<p>
 				Please Input your Authentication Password.
 			</p>
-			<p id="defauth"></p>
+			<p id="defauth">sample</p>
+			<button id="clearpw">Clear Password</button>
 			<form method="post" action="">
 			<textarea></textarea>
-			<input type="submit" value="Update Today's Diary Entry">
+			<button id="login">Login</button>
 			</form>
 		</div>
 		<div data-role="footer" data-position="fixed" data-theme="b">

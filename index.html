@@ -10,6 +10,27 @@
   	<script src="js/jquery.mobile-1.4.0.min.js"></script>
     <style>
 	</style>
+	<script>
+		//Initialization
+		var permanentStorage = window.localStorage;
+		var tempStorage = window.sessionStorage;
+		
+		//Check Login Status 0=Out 1=In
+		if (localStorage.logstate) {
+			if (localStorage.logstate == 0){
+				window.location="locked.html";
+			}
+		} else {
+			localStorage.logstate = 0; //Set default logstate
+			window.location="locked.html";
+		}
+		$(document).ready(function(){
+			$(".lockdiary").click(function(){
+				localStorage.logstate = 0;
+				window.location="locked.html";
+			});
+		});
+	</script>
   </head>
   <body>
 	<div class="page" data-role="page" id="whatsup"> <!--Home Section-->
@@ -29,7 +50,7 @@
 		<div data-role="panel" data-position="right" data-theme="a" id="panel1">
 			<h3></h3>
 			<fieldset data-role="controlgroup">
-			<a href="#lockdiary" data-ajax="false" class="ui-btn ui-btn-a ui-icon-lock ui-btn-icon-left">Lock Diary</a>
+			<a href="#" data-ajax="false" class="lockdiary ui-btn ui-btn-a ui-icon-lock ui-btn-icon-left">Lock Diary</a>
 			<a href="#registerapp" data-ajax="false" class="ui-btn ui-btn-a ui-icon-edit ui-btn-icon-left">Register App</a>
 			<a href="#updates" data-ajax="false" class="ui-btn ui-btn-a ui-icon-recycle ui-btn-icon-left">Check for Updates</a>
 			<a href="#about" data-ajax="false" class="ui-btn ui-btn-a ui-icon-info ui-btn-icon-left">About this App</a>
@@ -67,7 +88,7 @@
 		<div data-role="panel" data-position="right" data-theme="a" id="panel2">
 			<h3></h3>
 			<fieldset data-role="controlgroup">
-			<a href="#lockdiary" data-ajax="false" class="ui-btn ui-btn-a ui-icon-lock ui-btn-icon-left">Lock Diary</a>
+			<a href="#" data-ajax="false" class="lockdiary ui-btn ui-btn-a ui-icon-lock ui-btn-icon-left">Lock Diary</a>
 			<a href="#registerapp" data-ajax="false" class="ui-btn ui-btn-a ui-icon-edit ui-btn-icon-left">Register App</a>
 			<a href="#updates" data-ajax="false" class="ui-btn ui-btn-a ui-icon-recycle ui-btn-icon-left">Check for Updates</a>
 			<a href="#about" data-ajax="false" class="ui-btn ui-btn-a ui-icon-info ui-btn-icon-left">About this App</a>
