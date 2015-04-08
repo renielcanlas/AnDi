@@ -9,6 +9,8 @@
   	<script src="js/jquery.js"></script>
   	<script src="js/jquery.mobile-1.4.0.min.js"></script>
 	<script src="js/cordova.js"></script>
+	<script src="js/jquery-te-1.4.0.min.js"></script>
+	<link rel="stylesheet" href="css/jquery-te-1.4.0.css">
     <style>
 	</style>
 	<script>
@@ -23,6 +25,7 @@
 				window.localStorage.setItem("logstate","0");
 				window.location="locked.html";
 			});
+			$('.jqte').jqte();
 		});
 	</script>
   </head>
@@ -55,10 +58,8 @@
 			<p>
 				Tell AnDi about your personal experiences today. You can update every time. The date setting on your device is automatically used. 
 			</p>
-			<form method="post" action="">
-			<textarea></textarea>
-			<input type="submit" value="Update Today's Diary Entry">
-			</form>
+			<textarea class="jqte" id="whatsuptextarea"></textarea>
+			<button id="whatsupbutton">Update Today's Diary Entry</button>
 		</div>
 		<div data-role="footer" data-position="fixed" data-theme="b">
 			<h2 class="curdate"></h2>
