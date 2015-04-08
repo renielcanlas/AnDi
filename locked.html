@@ -8,44 +8,20 @@
   	<link rel="stylesheet"  href="css/themes/default/jquery.mobile-1.4.0.min.css">
   	<script src="js/jquery.js"></script>
   	<script src="js/jquery.mobile-1.4.0.min.js"></script>
+	<script src="js/cordova.js"></script>
     <style>
 	</style>
 	<script>
-		//Initialization
-		var permanentStorage = window.localStorage;
-		var tempStorage = window.sessionStorage;
-		
-		//Check Login Status 0=Out 1=In
-		if (localStorage.logstate) {
-			if (localStorage.logstate == 1){
+		$(document).ready(function(){
+			if(window.localStorage.getItem("logstate")=="1"){
 				window.location="index.html";
 			}
-		} else {
-			localStorage.logstate = 0; //Set default logstate
-		}
-		
-		//Show Default Password
-		
-		$(document).ready(function(){
-			if (localStorage.password !== 'undefined') {	
-				document.getElementById("defauth").innerHTML = 'Your password is <b>' + localStorage.passsword + '</b>';
-			} else {
-				localStorage.password = 'AnDi'; //Set default passsword as AnDi
-				document.getElementById("defauth").innerHTML = 'Your default password is <b>AnDi</b>';
-			}
-			
-			$("#clearpw").click(function(){
-				localStorage.removeItem(password);
-				//localStorage.password = 'AnDi'; //Set default passsword as AnDi
-				document.getElementById("defauth").innerHTML = 'Your default password is <b>AnDi</b>';
-			});
-			
 			$("#login").click(function(){
-				localStorage.logstate = 1;
-				window.reload();
-				if (localStorage.logstate == 1){
-					window.location="index.html";
-				}
+				window.localStorage.setItem("logstate","1");
+				//Authenticate password based on local storage 
+				$("#log").fadeOut();
+				$("#continue").css("visibility","visible");
+				$("#continue").fadeIn();
 			});
 		});
 	</script>
@@ -66,16 +42,17 @@
 			</fieldset>
 		</div><!-- /panel -->
 		<div class="ui-content" role="main">
+			<div id="log">
 			<h1>Authentication Required</h1>
 			<p>
 				Please Input your Authentication Password.
 			</p>
-			<p id="defauth">sample</p>
-			<button id="clearpw">Clear Password</button>
-			<form method="post" action="">
 			<textarea></textarea>
 			<button id="login">Login</button>
-			</form>
+			</div>
+			<div id="continue" style="visibility:hidden">
+				<a href="index.html" class="ui-btn ui-btn-b">Continue</a>
+			</div>
 		</div>
 		<div data-role="footer" data-position="fixed" data-theme="b">
 			<h2 class="curdate"></h2>

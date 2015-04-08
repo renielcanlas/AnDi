@@ -8,25 +8,20 @@
   	<link rel="stylesheet"  href="css/themes/default/jquery.mobile-1.4.0.min.css">
   	<script src="js/jquery.js"></script>
   	<script src="js/jquery.mobile-1.4.0.min.js"></script>
+	<script src="js/cordova.js"></script>
     <style>
 	</style>
 	<script>
-		//Initialization
-		var permanentStorage = window.localStorage;
-		var tempStorage = window.sessionStorage;
-		
-		//Check Login Status 0=Out 1=In
-		if (localStorage.logstate) {
-			if (localStorage.logstate == 0){
+		$(document).ready(function(){
+			if(window.localStorage.getItem("logstate")=="1"){
+			
+			}else{
+				window.localStorage.setItem("logstate","0");
 				window.location="locked.html";
 			}
-		} else {
-			localStorage.logstate = 0; //Set default logstate
-			window.location="locked.html";
-		}
-		$(document).ready(function(){
 			$(".lockdiary").click(function(){
-				localStorage.logstate = 0;
+				window.localStorage.setItem("logstate","0");
+				alert("Diary is now locked!");
 				window.location="locked.html";
 			});
 		});
