@@ -16,12 +16,53 @@
 			if(window.localStorage.getItem("logstate")=="1"){
 				window.location="index.html";
 			}
+			
+			//Handler for Empty password
+			if (localStorage.getItem("password") === null) {
+				$("#info").html("Password is not set. The default password is <b>AnDi</b>");
+			}
+			
+			//Login Authentication
 			$("#login").click(function(){
-				window.localStorage.setItem("logstate","1");
 				//Authenticate password based on local storage 
-				$("#log").fadeOut();
-				$("#continue").css("visibility","visible");
-				$("#continue").fadeIn();
+				if (localStorage.getItem("password") === null) {
+				  if($("#password").val()=='AnDi'){
+					window.localStorage.setItem("logstate","1");
+					$("#log").fadeOut();
+					$("#continue").css("visibility","visible");
+					$("#continue").fadeIn();
+				  }
+				  else{
+					$("#error").html("Invalid Password");
+				  }
+				}
+				else{
+					if($("#password").val()==localStorage.getItem("password")){
+					window.localStorage.setItem("logstate","1");
+					$("#log").fadeOut();
+					$("#continue").css("visibility","visible");
+					$("#continue").fadeIn();
+				  }
+				  else{
+					$("#error").html("Invalid Password");
+				  }
+				}
+			});
+			
+			$("#password").focus(function(){
+				$("#error").html("");
+				$("#password").val("");
+			});
+			
+			//Code for removing password
+			$("#removepw").click(function(){
+				window.localStorage.removeItem("password");
+				alert("Removed The password");
+			});
+			
+			$("#setpw").click(function(){
+				window.localStorage.setItem("password",$("#password").val());
+				alert("Set the password to: " + $("#password").val());
 			});
 		});
 	</script>
@@ -44,15 +85,20 @@
 		<div class="ui-content" role="main">
 			<div id="log">
 			<h1>Authentication Required</h1>
-			<p>
+			<p id="info">
 				Please Input your Authentication Password.
 			</p>
-			<textarea></textarea>
+			<p id="error" style="font-size:1.3em; color:red; font-weight:bold;"></p>
+			<input placeholder="Type Here" type="password" id="password">
 			<button id="login">Login</button>
 			</div>
 			<div id="continue" style="visibility:hidden">
 				<a href="index.html" data-ajax="false" class="ui-btn ui-btn-b">Continue</a>
 			</div>
+			<!--
+			<button id="removepw">Remove Password</button>
+			<button id="setpw">Set Password</button>
+			-->
 		</div>
 		<div data-role="footer" data-position="fixed" data-theme="b">
 			<h2 class="curdate"></h2>
