@@ -1,11 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <title>AnDi</title>
-  </head
+    <meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<title>AnDi</title>
+  	<link rel="shortcut icon" href="favicon.ico">
+  	<link rel="stylesheet"  href="css/themes/default/jquery.mobile-1.4.0.min.css">
+  	<script src="js/jquery.js"></script>
+  	<script src="js/jquery.mobile-1.4.0.min.js"></script>
+    <style>
+		.noshadow * {
+			-webkit-box-shadow: none !important;
+			-moz-box-shadow: none !important;
+			box-shadow: none !important;
+		}
+		form.ui-mini .ui-field-contain fieldset.ui-controlgroup legend small {
+			color: #888;
+		}
+		/* Swipe works with mouse as well but often causes text selection. */
+		#demo-page * {
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			-o-user-select: none;
+			user-select: none;
+		}
+		/* Content styling. */
+		dl { font-family: "Times New Roman", Times, serif; padding: 1em; }
+		dt { font-size: 2em; font-weight: bold; }
+		dt span { font-size: .5em; color: #777; margin-left: .5em; }
+		dd { font-size: 1.25em; margin: 1em 0 0; padding-bottom: 1em; border-bottom: 1px solid #eee; }
+		.back-btn { float: right; margin: 0 2em 1em 0; }
+		
+		.trans-list thead th,
+		.trans-list tbody tr:last-child {
+			border-bottom: 1px solid #d6d6d6; /* non-RGBA fallback */
+			border-bottom: 1px solid rgba(0,0,0,.1);
+		}
+		.trans-list tbody th,
+		.trans-list tbody td {
+			border-bottom: 1px solid #e6e6e6; /* non-RGBA fallback  */
+			border-bottom: 1px solid rgba(0,0,0,.05);
+		}
+		.trans-list tbody tr:last-child th,
+		.trans-list tbody tr:last-child td {
+			border-bottom: 0;
+		}
+		.trans-list tbody tr:nth-child(odd) td,
+		.trans-list tbody tr:nth-child(odd) th {
+			background-color: #eeeeee; /* non-RGBA fallback  */
+			background-color: rgba(0,0,0,.04);
+		}
+	</style>
+  </head>
   <body>
-    <img src="andilogo.png"><br>
-    <img src="ilt_default.png">
-  </body
+	<div class="page" data-role="page" id="home"> <!--Home Section-->
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>AUDLS</h1>
+			<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-icon-back ui-btn-icon-left ui-btn-a">Back</a>
+			<a href="#panel1" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-left ui-icon-user ui-btn-a">My Account</a>
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#home" data-transition="flow" data-icon="home" class="ui-btn-a">Home</a></li>
+					<li><a href="#news" data-transition="flow" data-icon="comment">News</a></li>
+					<li><a href="#books" data-transition="flow" data-icon="bars">Books</a></li>
+					<li><a href="#items" data-transition="flow" data-icon="grid">Items</a></li>
+					<li><a href="#downloadables" data-transition="flow" data-icon="tag">Downloadables</a></li>
+				</ul>
+			</div><!-- /navbar -->
+		</div><!-- /header -->
+		<div data-role="panel" data-position="right" data-theme="a" id="panel1">
+			<h3></h3>
+			<fieldset data-role="controlgroup">
+			<a href="#reservation" data-ajax="false" class="ui-btn ui-btn-a">My Reservation</a>
+			<a href="#transactions" data-ajax="false" class="ui-btn ui-btn-a">My Transactions</a>
+			<a href="#profile" data-ajax="false" class="ui-btn ui-btn-a">My Profile</a>
+			<a href="#change" data-ajax="false" class="ui-btn ui-btn-a">Change Password</a>
+			<a href="logout.php" data-ajax="false" class="ui-btn ui-btn-a">Logout</a>
+			</fieldset>
+		</div><!-- /panel -->
+		<div class="ui-content" role="main">
+			<center><img src="../images/banner.png" width="80%"></center>
+			<h1>Home</h1>
+			<p>
+				Pamantasan ng Araullo (formerly Araullo Law School) was established in 1950. It was created by virtue of a resolution enacted by a board composed of Judge Lauro S. Esteban, Atty. Mario S. Garcia, Engr. Ceferino S. Esteban, Mr. Valentin Castelo, Dr. Herminia Castelo-Sotto, Ms Priscilla S. Esteban, Mr. Emmanuel S. Esteban, Atty. Juan S. Esteban and Mr. Ambrocio S. Esteban. Named after Hon. Manuel Araullo, second Chief Justice of the Supreme Court of the Philippines, the Araullo Law School at that time was founded to meet the growing demand for lawyers arising from the rapid growth of the City of Cabanatuan in particular and Nueva Ecija as a whole.
+			</p>
+			<p>
+				Araullo University Phinma Education Network proposed this <strong>Digital Library System</strong> to have an easier access to our school library. You can search books and other study materials and request for reservations. Every transactions you need in our library is just a click away.
+			</p>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h2>AUDLS</h2>
+		</div>
+	</div><!-- /page -->
+  </body>
 </html>
