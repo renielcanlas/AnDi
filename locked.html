@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<title>AnDi</title>
+  	<link rel="shortcut icon" href="icon.ico">
+  	<link rel="stylesheet"  href="css/themes/default/jquery.mobile-1.4.0.min.css">
+  	<script src="js/jquery.js"></script>
+  	<script src="js/jquery.mobile-1.4.0.min.js"></script>
+    <style>
+	</style>
+	<script>
+		//Initialization
+		
+		//Check Login Status 0=Out 1=In
+		if (localStorage.logstate) {
+			if (localStorage.logstate == 1){
+				window.location="index.html";
+			}
+		} else {
+			localStorage.logstate = 0; //Set default logstate
+		}
+		
+		//Show Default Password
+		if (!localStorage.password) {
+			localStorage.password = AnDi; //Set default password
+		}
+	</script>
+  </head>
+  <body>
+	<div class="page" data-role="page" id="whatsup"> <!--Home Section-->
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>AnDi</h1>
+			<a href="#panel1" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-left ui-icon-gear ui-btn-a ui-btn-a ui-btn-icon-notext">My Account</a>
+		</div><!-- /header -->
+		<div data-role="panel" data-position="right" data-theme="a" id="panel1">
+			<h3></h3>
+			<fieldset data-role="controlgroup">
+			<a href="#lockdiary" data-ajax="false" class="ui-btn ui-btn-a ui-icon-lock ui-btn-icon-left">Lock Diary</a>
+			<a href="#registerapp" data-ajax="false" class="ui-btn ui-btn-a ui-icon-edit ui-btn-icon-left">Register App</a>
+			<a href="#updates" data-ajax="false" class="ui-btn ui-btn-a ui-icon-recycle ui-btn-icon-left">Check for Updates</a>
+			<a href="#about" data-ajax="false" class="ui-btn ui-btn-a ui-icon-info ui-btn-icon-left">About this App</a>
+			</fieldset>
+		</div><!-- /panel -->
+		<div class="ui-content" role="main">
+			<h1>Authentication Required</h1>
+			<p>
+				Please Input your Authentication Password.
+			</p>
+			<p id="defauth"></p>
+			<form method="post" action="">
+			<textarea></textarea>
+			<input type="submit" value="Update Today's Diary Entry">
+			</form>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h2 class="curdate"></h2>
+		</div>
+	</div><!-- /page -->
+  </body>
+ </html>
